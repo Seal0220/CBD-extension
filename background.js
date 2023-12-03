@@ -26,8 +26,8 @@ function searchCambridgeDictionary(text) {
                 const doc = parser.parseFromString(html, 'text/html');
                 const targetDiv = doc.querySelectorAll('.entry .entry-body .pr.entry-body__el');
 
-                let exampleToggle_style = document.createElement('style');
-                exampleToggle_style.innerHTML = `
+                let styled = document.createElement('style');
+                styled.innerHTML = `
                     .EXAMPLE-toggle {
                         width: fit-content;
                         margin: 0 0 10px 10px;
@@ -40,13 +40,41 @@ function searchCambridgeDictionary(text) {
                     .EXAMPLE-toggle:hover {
                         background-color: #292929;
                     }
+
+                    #OPEN {
+                        width: 20px;
+                        height: 20px;
+                        right: 0; 
+                        position: absolute; 
+                        z-index: 10001;
+                        padding: 5px;
+                        border-radius: 30px;
+                        background-color: black;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center; 
+                        justify-content: center;
+                        box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
+                    }
+                    #OPEN:hover {
+                        background-color: #141414;
+                    }
                 `;
 
                 let beautifulDiv = document.createElement('div');
                 beautifulDiv.style.display = 'flex';
                 beautifulDiv.style.flexDirection = 'column';
                 beautifulDiv.style.gap = '20px';
-                beautifulDiv.appendChild(exampleToggle_style);
+                beautifulDiv.appendChild(styled);
+                beautifulDiv.innerHTML += `
+                    <div id="OPEN" style="transform: translate(0px, -65px);">
+                        <a href="${url}" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="auto" height="auto" viewBox="0 0 24 24">
+                                <path fill="white" d="M 5 3 C 3.9069372 3 3 3.9069372 3 5 L 3 19 C 3 20.093063 3.9069372 21 5 21 L 19 21 C 20.093063 21 21 20.093063 21 19 L 21 12 L 19 12 L 19 19 L 5 19 L 5 5 L 12 5 L 12 3 L 5 3 z M 14 3 L 14 5 L 17.585938 5 L 8.2929688 14.292969 L 9.7070312 15.707031 L 19 6.4140625 L 19 10 L 21 10 L 21 3 L 14 3 z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                `
                 
                 if (targetDiv.length !== 0) {
                     targetDiv.forEach(ele => {
