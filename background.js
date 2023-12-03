@@ -46,7 +46,7 @@ function searchCambridgeDictionary(text) {
                         height: 20px;
                         right: 0; 
                         position: absolute; 
-                        z-index: 10001;
+                        z-index: 1000001;
                         padding: 5px;
                         border-radius: 30px;
                         background-color: black;

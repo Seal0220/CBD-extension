@@ -33,7 +33,7 @@ function createBox(text, x, y) {
     box.style.padding = '30px';
     box.style.color = 'white';
     box.style.boxShadow = '0px 0px 30px 0px rgba(0, 0, 0, 0.5)';
-    box.style.zIndex = 10000;
+    box.style.zIndex = 1000000;
     box.style.maxWidth = '50vw';
     box.style.fontFamily = 'Arial, sans-serif'
     box.id = 'text-selection-box';
